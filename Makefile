@@ -6,7 +6,7 @@
 #    By: astepano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/03 15:03:21 by astepano          #+#    #+#              #
-#    Updated: 2017/03/21 23:38:52 by astepano         ###   ########.fr        #
+#    Updated: 2017/03/22 22:22:56 by astepano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,26 +22,27 @@ OBJS    = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	make -C $(LIB)
-	$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
+	@make -C $(LIB)
+	@$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
+	@cp $(NAME) resources/players/
 
 .c.o:
-    @printf "[CC] %s                                                  \r" $<
-    @$(CC) $(CFLAGS) -c $<  -o $@
+	@printf "[CC] %s                                                  \r" $<
+	@$(CC) $(CFLAGS) -c $<  -o $@
 
 clean:
-	make -C $(LIB) clean
+	@make -C $(LIB) clean
 
 fclean: clean
-	make -C $(LIB) fclean
+	@make -C $(LIB) fclean
 
 pre_re:
-	rm -rf $(DEL)
-	touch $(NAME)
-	mkdir $(DEL)
-	mv $(NAME) $(DEL)
+	@rm -rf $(DEL)
+	@touch $(NAME)
+	@mkdir $(DEL)
+	@mv $(NAME) $(DEL)
  
 post_re:
-	rm -rf $(DEL)
+	@rm -rf $(DEL)
 
 re: fclean pre_re all post_re

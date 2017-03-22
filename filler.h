@@ -1,8 +1,11 @@
 #ifndef FILLER_H
 # define FILLER_H
 
+# define FD 0
+
 # include "fcntl.h"
 # include "libft/libft.h"
+
 
 typedef struct	s_info
 {
@@ -21,3 +24,7 @@ void	remove_piece(t_info *in);
 void	remove_map(t_info *in);
 
 #endif
+
+//stdin  0
+//stdout 1
+

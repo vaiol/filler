@@ -7,14 +7,14 @@ void	update_map(t_info *in)
 	char	*line;
 	char	*tmp;
 
-	get_next_line(1, &line);
+	get_next_line(FD, &line);
 	free(line);
-	get_next_line(1, &line);
+	get_next_line(FD, &line);
 	free(line);
 	i = 0;
 	while (i < in->map_high)
 	{
-		get_next_line(1, &tmp);
+		get_next_line(FD, &tmp);
 		line = tmp + 4;
 		j = 0;
 		while (in->map[i][j])
@@ -34,7 +34,7 @@ void	update_piece(t_info *in)
 	int		len;
 	char	*line;
 
-	get_next_line(1, &line);
+	get_next_line(FD, &line);
 	free(line);
 	i = 6;
 	high = ft_atoi(line + i);
@@ -46,7 +46,7 @@ void	update_piece(t_info *in)
 	i = 0;
 	while (i < high)
 	{
-		get_next_line(1, &line);
+		get_next_line(FD, &line);
 		in->piece[i] = ft_strsub(line, 0, (size_t)len);
 		free(line);
 		i++;

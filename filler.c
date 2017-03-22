@@ -15,9 +15,9 @@ int		put(t_info *in, const int i, const int j)
 			return (0);
 		while (in->piece[k][l])
 		{
-			if (!in->map[i + k][j + l] || in->map[i + k][j + l] == in->o_symbol)
+			if (!in->map[i + k][j + l] || ft_tolower(in->map[i + k][j + l]) == in->o_symbol)
 				return (0);
-			if (in->piece[k][l] == '*' && in->map[i + k][j + l] == in->p_symbol)
+			if (in->piece[k][l] == '*' && ft_tolower(in->map[i + k][j + l]) == in->p_symbol)
 				count++;
 			if (count > 1)
 				return (0);
@@ -25,7 +25,9 @@ int		put(t_info *in, const int i, const int j)
 		}
 		k++;
 	}
-	return (1);
+	if (count == 1)
+		return (1);
+	return (0);
 }
 
 int		run(t_info *in)
@@ -56,6 +58,7 @@ int	main(void)
 
 	t_info	*in;
 
+	ft_printf("0 0\n");
 	in = (t_info *)malloc(sizeof(t_info));
 	init_symbols(in);
 	init_map(in);

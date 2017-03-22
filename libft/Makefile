@@ -6,7 +6,7 @@
 #    By: astepano <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/12/03 15:03:21 by astepano          #+#    #+#              #
-#    Updated: 2017/03/21 23:28:50 by astepano         ###   ########.fr        #
+#    Updated: 2017/03/22 13:14:54 by astepano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,15 +54,16 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $(NAME) $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 
 .c.o:
-	$(CC) $(CFLAGS) -c $<  -o $@
+	@printf "[CC] %s                                                  \r" $<
+	@$(CC) $(CFLAGS) -c $<  -o $@
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

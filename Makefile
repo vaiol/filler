@@ -10,14 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
-LIB = libft/
-NAME = astepano.filler
-DEL = deleted_folder_everrr
+LIB     = libft/
+NAME    = filler
+DEL     = deleted_folder_everrr
+CFLAGS  = -Wall -Wextra -Werror
+CC      = gcc
+
+SRCS    = filler.c init.c update.c remove.c
+OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME):
 	make -C $(LIB)
+	$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
+
+.c.o:
+    @printf "[CC] %s                                                  \r" $<
+    @$(CC) $(CFLAGS) -c $<  -o $@
 
 clean:
 	make -C $(LIB) clean

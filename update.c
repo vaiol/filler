@@ -17,7 +17,7 @@ void	update_map(t_info *in)
 		get_next_line(FD, &tmp);
 		line = tmp + 4;
 		j = 0;
-		while (in->map[i][j])
+		while (j < in->map_width)
 		{
 			in->map[i][j] = line[j];
 			j++;
@@ -35,12 +35,12 @@ void	update_piece(t_info *in)
 	char	*line;
 
 	get_next_line(FD, &line);
-	free(line);
 	i = 6;
 	high = ft_atoi(line + i);
 	while (ft_isdigit(line[i]))
 		i++;
 	len = ft_atoi(line + i);
+	free(line);
 	remove_piece(in);
 	in->piece = (char **)malloc(sizeof(char *) * (high + 1));
 	i = 0;

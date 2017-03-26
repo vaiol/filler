@@ -10,12 +10,12 @@ void	init_symbols(t_info *in)
 	if (i == 1)
 	{
 		in->player = 'o';
-		in->oponent = 'x';
+		in->enemy = 'x';
 	}
 	else
 	{
 		in->player = 'x';
-		in->oponent = 'o';
+		in->enemy = 'o';
 	}
 	in->piece = NULL;
 	in->map = NULL;
@@ -52,26 +52,26 @@ void	init_direction(t_info *in)
 {
 	int	j;
 
-	in->begin_high = 0;
-	while (in->begin_high < in->map_high)
+	in->start_high = 0;
+	while (in->start_high < in->map_high)
 	{
 		j = 0;
 		while (j < in->map_width)
 		{
-			if (ft_tolower(in->map[in->begin_high ][j]) == in->player)
+			if (ft_tolower(in->map[in->start_high ][j]) == in->player)
 			{
-				if (in->begin_high  < (in->map_high / 2))
-					in->main_direction = DOWN;
+				if (in->start_high  < (in->map_high / 2))
+					in->up_down = DOWN;
 				else
-					in->main_direction = UP;
+					in->up_down = UP;
 				if (j < (in->map_width / 2))
-					in->sub_direction = RIGHT;
+					in->left_right = RIGHT;
 				else
-					in->sub_direction = LEFT;
+					in->left_right = LEFT;
 				return ;
 			}
 			j++;
 		}
-		in->begin_high++;
+		in->start_high++;
 	}
 }

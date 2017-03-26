@@ -16,14 +16,14 @@ typedef enum	e_move
 typedef struct	s_info
 {
 	char		player;
-	char 		oponent;
+	char 		enemy;
 	int			map_high;
 	int			map_width;
+	int			start_high;
 	char		**map;
 	char		**piece;
-	t_direction	main_direction;
-	t_direction	sub_direction;
-	int			begin_high;
+	t_direction	up_down;
+	t_direction	left_right;
 }				t_info;
 
 void	init_symbols(t_info *in);
@@ -33,5 +33,6 @@ void	update_piece(t_info *in);
 void	update_map(t_info *in);
 void	remove_piece(t_info *in);
 void	remove_map(t_info *in);
+int		fill(t_info *in);
 
 #endif

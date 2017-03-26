@@ -10,24 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-LIB     = libft/
-NAME    = filler
+LIB     = ../libft/
+NAME    = visualizer
 DEL     = deleted_folder_everrr
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
-SRCS    = main.c filler.c init.c update.c remove.c
+SRCS    = main.c init.c remove.c print.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@printf "[CC] libft.a start:\n"
-	@make -C $(LIB)
-	@printf "[CC] libft.a finished successfull!\n"
 	@$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
-	@cp $(NAME) resources/players/
-	@printf "[CC] filler\n"
+	@cp visualizer ../resources
 
 .c.o:
 	@printf "[CC] %s\n" $<
@@ -36,19 +32,17 @@ $(NAME): $(OBJS)
 clean:
 	@printf "[RM] objects\n"
 	@rm -rf $(OBJS)
-	@make -C $(LIB) clean
 
 fclean: clean
-	@printf "[RM] filler libft/libft.a\n"
+	@printf "[RM] filler ../libft/libft.a\n"
 	@rm -rf $(NAME)
-	@make -C $(LIB) fclean
 
 pre_re:
 	@rm -rf $(DEL)
 	@touch $(NAME)
 	@mkdir $(DEL)
 	@mv $(NAME) $(DEL)
- 
+
 post_re:
 	@rm -rf $(DEL)
 

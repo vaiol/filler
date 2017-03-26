@@ -47,3 +47,31 @@ void	init_map(t_info *in)
 	}
 	in->map[i] = NULL;
 }
+
+void	init_direction(t_info *in)
+{
+	int	j;
+
+	in->begin_high = 0;
+	while (in->begin_high < in->map_high)
+	{
+		j = 0;
+		while (j < in->map_width)
+		{
+			if (ft_tolower(in->map[in->begin_high ][j]) == in->player)
+			{
+				if (in->begin_high  < (in->map_high / 2))
+					in->main_direction = DOWN;
+				else
+					in->main_direction = UP;
+				if (j < (in->map_width / 2))
+					in->sub_direction = RIGHT;
+				else
+					in->sub_direction = LEFT;
+				return ;
+			}
+			j++;
+		}
+		in->begin_high++;
+	}
+}

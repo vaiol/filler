@@ -33,6 +33,10 @@ void	update_piece(t_info *in);
 void	update_map(t_info *in);
 void	remove_piece(t_info *in);
 void	remove_map(t_info *in);
+int		put_piece(t_info *in, const int i, const int j);
+int		attack(t_info *in, int *n, int *m);
+int		fill_big(t_info *in);
+int		fill_small(t_info *in);
 int		fill(t_info *in);
 
 #endif

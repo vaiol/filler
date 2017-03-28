@@ -19,7 +19,8 @@ typedef struct	s_info
 	char 		enemy;
 	int			map_high;
 	int			map_width;
-	int			start_high;
+	int			player_high;
+	int			enemy_high;
 	char		**map;
 	char		**piece;
 	t_direction	up_down;
@@ -29,6 +30,7 @@ typedef struct	s_info
 void	init_symbols(t_info *in);
 void	init_map(t_info *in);
 void	init_direction(t_info *in);
+void	init_highs(t_info *in);
 void	update_piece(t_info *in);
 void	update_map(t_info *in);
 void	remove_piece(t_info *in);

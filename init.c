@@ -51,16 +51,17 @@ void	init_map(t_info *in)
 void	init_direction(t_info *in)
 {
 	int	j;
+	int i;
 
-	in->start_high = 0;
-	while (in->start_high < in->map_high)
+	i = 0;
+	while (i < in->map_high)
 	{
 		j = 0;
 		while (j < in->map_width)
 		{
-			if (ft_tolower(in->map[in->start_high ][j]) == in->player)
+			if (ft_tolower(in->map[i][j]) == in->player)
 			{
-				if (in->start_high  < (in->map_high / 2))
+				if (i  < (in->map_high / 2))
 					in->up_down = DOWN;
 				else
 					in->up_down = UP;
@@ -72,6 +73,31 @@ void	init_direction(t_info *in)
 			}
 			j++;
 		}
-		in->start_high++;
+		i++;
 	}
+}
+
+void	init_highs(t_info *in)
+{
+	int	j;
+	int i;
+
+	i = 0;
+	while (i < in->map_high)
+	{
+		j = 0;
+		while (j < in->map_width)
+		{
+			if (ft_tolower(in->map[i][j]) == in->player)
+				in->player_high = i;
+			if (ft_tolower(in->map[i][j]) == in->enemy)
+				in->enemy_high = i;
+			j++;
+		}
+		i++;
+	}
+	if (in->up_down == DOWN)
+		in->enemy_high += 3;
+	else
+		in->enemy_high -= 3;
 }

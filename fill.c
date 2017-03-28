@@ -29,8 +29,6 @@ int		put_piece(t_info *in, const int i, const int j)
 	return (c);
 }
 
-
-
 int		attack(t_info *in, int *n, int *m)
 {
 	int	i;
@@ -75,6 +73,7 @@ int	main(void)
 	init_symbols(in);
 	init_map(in);
 	init_direction(in);
+	init_highs(in);
 	update_piece(in);
 	while (fill(in))
 	{

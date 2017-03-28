@@ -82,6 +82,8 @@ void	print_map(t_info *in)
 	move = ft_strfjoin(move, "\x1B[0m\0", FIRST);
 	move = ft_strfjoin(delim, move, BOTH);
 	move = ft_strfjoin(move, "\n", FIRST);
+	setbuf(stdout, NULL);
 	system("clear");
 	printf("%s", move);
+	fflush(stdout);
 }

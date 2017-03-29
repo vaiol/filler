@@ -12,7 +12,6 @@
 
 LIB     = ../libft/
 NAME    = visualizer
-DEL     = deleted_folder_everrr
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
@@ -23,7 +22,6 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
-	@cp visualizer ../resources
 
 .c.o:
 	@printf "[CC] %s\n" $<
@@ -34,16 +32,7 @@ clean:
 	@rm -rf $(OBJS)
 
 fclean: clean
-	@printf "[RM] filler ../libft/libft.a\n"
+	@printf "[RM] visualizer\n"
 	@rm -rf $(NAME)
 
-pre_re:
-	@rm -rf $(DEL)
-	@touch $(NAME)
-	@mkdir $(DEL)
-	@mv $(NAME) $(DEL)
-
-post_re:
-	@rm -rf $(DEL)
-
-re: fclean pre_re all post_re
+re: fclean all

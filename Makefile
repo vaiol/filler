@@ -12,7 +12,6 @@
 
 LIB     = libft/
 NAME    = filler
-DEL     = deleted_folder_everrr
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
@@ -26,7 +25,6 @@ $(NAME): $(OBJS)
 	@make -C $(LIB)
 	@printf "[CC] libft.a finished successfull!\n"
 	@$(CC) $(CFLAGS) $(SRCS) $(LIB)libft.a -o $(NAME)
-	@cp $(NAME) resources/players/
 	@printf "[CC] filler\n"
 
 .c.o:
@@ -43,13 +41,4 @@ fclean: clean
 	@rm -rf $(NAME)
 	@make -C $(LIB) fclean
 
-pre_re:
-	@rm -rf $(DEL)
-	@touch $(NAME)
-	@mkdir $(DEL)
-	@mv $(NAME) $(DEL)
- 
-post_re:
-	@rm -rf $(DEL)
-
-re: fclean pre_re all post_re
+re: fclean all

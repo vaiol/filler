@@ -54,8 +54,6 @@ static void	check_direction(t_info *in)
 		if (ft_tolower(in->map[i][j]) == in->player)
 		{
 			in->left_right = in->up_down;
-//			in->left_right = (in->up_down == UP) ? DOWN : UP;
-//			in->up_down = in->left_right;
 			break ;
 		}
 		i++;

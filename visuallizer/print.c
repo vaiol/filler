@@ -1,12 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/29 20:02:29 by astepano          #+#    #+#             */
+/*   Updated: 2017/03/29 20:02:30 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
 char	*get_x(int nbr)
 {
-	char	color[120] = "\x1B[31m\0";
+	char	color[130];
 	char	res[100];
 
+	ft_memset(color, '\0', 130);
 	ft_memset(res, 'X', 100);
 	res[nbr] = '\0';
+	strcat(color, "\x1B[31m\0");
 	strcat(color, res);
 	strcat(color, "\x1B[0m\0");
 	return (ft_strdup(color));
@@ -14,11 +28,13 @@ char	*get_x(int nbr)
 
 char	*get_o(int nbr)
 {
-	char	color[120] = "\x1B[34m\0";
+	char	color[130];
 	char	res[100];
 
 	ft_memset(res, 'O', 100);
+	ft_memset(color, '\0', 130);
 	res[nbr] = '\0';
+	strcat(color, "\x1B[34m\0");
 	strcat(color, res);
 	strcat(color, "\x1B[0m\0");
 	return (ft_strdup(color));

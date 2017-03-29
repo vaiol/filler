@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/29 19:46:06 by astepano          #+#    #+#             */
+/*   Updated: 2017/03/29 19:46:08 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fill.h"
 
 void	init_symbols(t_info *in)
@@ -19,13 +31,14 @@ void	init_symbols(t_info *in)
 	}
 	in->piece = NULL;
 	in->map = NULL;
+	in->changed = 0;
 	free(line);
 }
 
 void	init_map(t_info *in)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 8;
 	get_next_line(FD, &line);
@@ -61,7 +74,7 @@ void	init_direction(t_info *in)
 		{
 			if (ft_tolower(in->map[i][j]) == in->player)
 			{
-				if (i  < (in->map_high / 2))
+				if (i < (in->map_high / 2))
 					in->up_down = DOWN;
 				else
 					in->up_down = UP;

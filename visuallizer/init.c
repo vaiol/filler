@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/29 20:02:00 by astepano          #+#    #+#             */
+/*   Updated: 2017/03/29 20:02:01 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
 void	init_players(t_info *in)
@@ -26,8 +38,8 @@ void	init_players(t_info *in)
 
 void	init_map(t_info *in)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 8;
 	get_next_line(FD, &line);

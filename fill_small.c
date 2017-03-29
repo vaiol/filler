@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_small.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/29 19:45:50 by astepano          #+#    #+#             */
+/*   Updated: 2017/03/29 19:45:51 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fill.h"
 
 static int	move_left_right(t_info *in, int *n, int *m)
@@ -13,15 +25,14 @@ static int	move_left_right(t_info *in, int *n, int *m)
 		j = 0;
 		while (j < in->map_high)
 		{
-			if (put_piece(in, j, i))
+			if (put_piece(in, j++, i))
 			{
-				*n = j;
+				*n = j - 1;
 				*m = i;
 				move = 1;
 				if (in->up_down == UP)
 					return (move);
 			}
-			j++;
 		}
 		if (move)
 			return (move);
@@ -29,7 +40,6 @@ static int	move_left_right(t_info *in, int *n, int *m)
 	}
 	return (move);
 }
-
 
 static void	check_direction(t_info *in)
 {

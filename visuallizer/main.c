@@ -1,13 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astepano <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/03/29 20:02:09 by astepano          #+#    #+#             */
+/*   Updated: 2017/03/29 20:02:10 by astepano         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.h"
 
 void	finish(int p1, int p2, t_info *in)
 {
+	int	res;
+
+	res = p1 + p2;
 	if (p1 > p2)
+	{
 		ft_printf("{blue}%s{eoc} {yellow}WIN!!!!!!!!!!!!!{eoc}\n", in->p1);
+		ft_printf("{blue}%.0f%%{eoc}\n", ((double)p1 / res) * 100);
+	}
 	else if (p2 > p1)
+	{
 		ft_printf("{red}%s{eoc} {yellow}WIN!!!!!!!!!!!!!{eoc}\n", in->p2);
+		ft_printf("{red}%.0f%%{eoc}\n", ((double)p2 / res) * 100);
+	}
 	else
+	{
 		ft_printf("{yellow}DRAW... Try again!{eoc}\n");
+	}
 }
 
 void	update_map(t_info *in)
@@ -54,11 +77,10 @@ void	skip_piece(char *line)
 	}
 }
 
-int isfinish(t_info *in)
+int		isfinish(t_info *in)
 {
 	char	*line;
 	int		p1;
-	int		p2;
 
 	get_next_line(FD, &line);
 	if (in->move)
@@ -70,11 +92,11 @@ int isfinish(t_info *in)
 		p1 = ft_atoi(line + 10);
 		free(line);
 		get_next_line(FD, &line);
-		p2 = ft_atoi(line + 10);
+		finish(p1, ft_atoi(line + 10), in);
 		free(line);
-		finish(p1, p2, in);
 		return (0);
-	} else if (line[0] == 'P' && line[1] == 'i')
+	}
+	else if (line[0] == 'P' && line[1] == 'i')
 	{
 		skip_piece(line);
 		return (2);
@@ -83,7 +105,7 @@ int isfinish(t_info *in)
 	return (1);
 }
 
-int	main(void)
+int		main(void)
 {
 	int		finish;
 	t_info	*in;

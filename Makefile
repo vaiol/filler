@@ -16,7 +16,7 @@ DEL     = deleted_folder_everrr
 CFLAGS  = -Wall -Wextra -Werror
 CC      = gcc
 
-SRCS    = fill.c fill_small.c fill_big.c init.c update.c remove.c
+SRCS    = fill.c fill_small.c fill_big.c attack.c init.c update.c remove.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
